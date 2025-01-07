@@ -1,0 +1,29 @@
+{
+  "name": "ms-teams-deploy-card",
+  "version": "1.0.0",
+  "description": "Microsoft Teams Deploy Card",
+  "main": "index.ts",
+  "repository": "https://github.com/aloong-actions/teams-deploy-card",
+  "author": "Loong Zhou",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "@actions/core": "^1.2.2",
+    "@actions/github": "^5.0.3",
+    "@octokit/rest": "^16.43.1",
+    "moment-timezone": "^0.5.37",
+    "ncc": "^0.3.6",
+    "node-fetch": "^2.6.0",
+    "yaml": "^1.10.0"
+  },
+  "devDependencies": {
+    "@types/moment-timezone": "^0.5.12",
+    "@types/node-fetch": "^2.5.4",
+    "@zeit/ncc": "^0.21.0",
+    "typescript": "^3.7.5"
+  },
+  "scripts": {
+    "build": "tsc && ncc build --source-map",
+    "ncc": "ncc build src/index.ts --source-map -o dist/main && ncc build src/post.ts --source-map -o dist/post"
+  }
+}

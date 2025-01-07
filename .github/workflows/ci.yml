@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
+      - 'image/**'
+  push:
+    branches:
+      - '**'
+    paths-ignore:
+      - '**.md'
+      - 'image/**'
+
+jobs:
+  ci-job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - name: Install dependencies
+        run: npm ci
+      - name: package
+        run: npm run ncc
+

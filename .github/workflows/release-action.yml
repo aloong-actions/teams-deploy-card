@@ -1,0 +1,19 @@
+name: Release Action
+
+permissions:
+  contents: write
+
+on:
+  release:
+    types: [published, edited]
+
+jobs:
+  release-action-job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Tag latest release
+        uses: Actions-R-Us/actions-tagger@latest
+        with:
+          publish_latest_tag: true
